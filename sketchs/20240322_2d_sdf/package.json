@@ -1,0 +1,20 @@
+{
+  "name": "sdf",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "scripts": {
+    "dev": "vite"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gl-matrix": "^3.4.3",
+    "lil-gui": "^0.19.2"
+  },
+  "devDependencies": {
+    "vite": "^5.1.4",
+    "vite-plugin-glsl": "^1.2.1"
+  }
+}

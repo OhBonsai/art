@@ -1,9 +1,12 @@
+#version 300 es
+
 precision mediump float;
 
 uniform float uTime;
 uniform vec2 uResolution;
 uniform vec3 uColor;
 
+out vec4 fragColor;
 
 
 vec2 guv() {
@@ -30,5 +33,5 @@ void main()
 
     vec3 finalColor = uColor * (alpha > 0. ? 0.0 : 1.0);
 
-    gl_FragColor = vec4(finalColor, 1.0);
+    fragColor = vec4(finalColor, 1.0);
 }

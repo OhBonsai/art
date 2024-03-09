@@ -2,5 +2,6 @@
   "name": "raw webgl boilerplate",
   "description": "a simple boilerplate for raw webgl sketch, using vite&gl-matrix",
   "origin": "",
+  "createdAt": 1710942880641,
   "tags": ["boilerplate"]
 }

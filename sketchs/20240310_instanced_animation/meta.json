@@ -2,5 +2,6 @@
   "name": "instanced animation",
   "description": "generate aoMap texture from geoJson. transformed polygon with wave animation. and also add a debug tool by using fbo",
   "origin": "https://www.youtube.com/watch?v=QMZaqXEEtto",
-  "tags": ["animation", "instanced"]
+  "tags": ["animation", "instanced"],
+  "createdAt": 1710683680641
 }

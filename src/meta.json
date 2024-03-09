@@ -1,15 +1,14 @@
 [
   {
-    "name": "instanced animation",
-    "source": "/20240310_instanced_animation",
-    "snapshot": "20240310_instanced_animation.gif",
+    "name": "2d sdf",
+    "source": "/20240322_2d_sdf",
+    "snapshot": "20240322_2d_sdf.png",
     "tags": [
-      "animation",
-      "instanced"
+      "fundament"
     ],
-    "description": "generate aoMap texture from geoJson. transformed polygon with wave animation. and also add a debug tool by using fbo",
-    "createdAt": 1710724483482,
-    "updatedAt": 1710662281912,
+    "description": "practice some 2D SDF(signed distance fields)",
+    "createdAt": 1711213149797,
+    "updatedAt": 1711183548219,
     "origin": ""
   },
   {
@@ -20,8 +19,21 @@
       "boilerplate"
     ],
     "description": "a simple boilerplate for raw webgl sketch, using vite&gl-matrix",
-    "createdAt": 1710724482743,
-    "updatedAt": 1710724448116,
+    "createdAt": 1710942880641,
+    "updatedAt": 1711117951608,
+    "origin": ""
+  },
+  {
+    "name": "instanced animation",
+    "source": "/20240310_instanced_animation",
+    "snapshot": "20240310_instanced_animation.gif",
+    "tags": [
+      "animation",
+      "instanced"
+    ],
+    "description": "generate aoMap texture from geoJson. transformed polygon with wave animation. and also add a debug tool by using fbo",
+    "createdAt": 1710683680641,
+    "updatedAt": 1711117124615,
     "origin": ""
   },
   {
@@ -33,7 +45,7 @@
     ],
     "description": "a simple boilerplate for r3f sketch, using vite&r3f&jsx",
     "createdAt": 1710078880641,
-    "updatedAt": 1710249333000,
+    "updatedAt": 1710084992316,
     "origin": ""
   }
 ]
