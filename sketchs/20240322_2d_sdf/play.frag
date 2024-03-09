@@ -69,7 +69,7 @@ void fill(float dist, vec3 color, inout vec3 fragColor, float aa)
     fragColor = mix(fragColor, color, alpha);
 }
 
-void renderCircle(float dist, inout vec3 fragColor) {
+void render(float dist, inout vec3 fragColor) {
     vec3 axes = RED;
     float thickness = 0.03;
     float aa = 0.01;
@@ -179,6 +179,7 @@ float gridIndxFromCenter(vec2 cellPos) {
 }
 
 
+
 void main()
 {
     vec2 uv2 = guv();
@@ -254,9 +255,9 @@ void main()
 
         renderGrid(uv, fragColor.rgb);
         float v = abs(sdf_circle(uv, radius));
-        renderCircle(v, fragColor.rgb);
+        render(v, fragColor.rgb);
         float v2 = abs(sdf_circle(uv, 1.0 + f4 - radius ));
-        renderCircle(v2, fragColor.rgb);
+        render(v2, fragColor.rgb);
 //        v = smoothstep(0.00, 0.01, 1.0 - v);
 //        v = 1.0 -exp(v*3.);
 //        fragColor.rgb = mix(fragColor.rgb, WHITE, v);
@@ -279,6 +280,7 @@ void main()
         float d2 = cos(a2 - a) * d - f1  ;
         fragColor.rgb = vec3(d2 > 0.0 ? 1.0 : 0.0);
     } else if(cellIdx == currentIdx2 ++) {
+
     } else if(cellIdx == currentIdx2 ++) {
     } else if(cellIdx == currentIdx2 ++) {
     } else if(cellIdx == currentIdx2 ++) {
@@ -293,11 +295,10 @@ void main()
 
     }
 
-
-//    float gray1 = cellIdx / shortCount / 4.0;
-//    float currentIdx = floor(mod(uTime * 5.0,shortCount * 4.0));
-//    vec3 finalColor = cellIdx == currentIdx ? vec3(gray1): fragColor.rgb ;
-//    fragColor = vec4(finalColor, 1.0);
+    float gray1 = cellIdx / shortCount / 4.0;
+    float currentIdx = floor(mod(uTime * 5.0,shortCount * 4.0));
+    vec3 finalColor = cellIdx == currentIdx ? vec3(gray1): fragColor.rgb ;
+    fragColor = vec4(finalColor, 1.0);
 
 
 }
