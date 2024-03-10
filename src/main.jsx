@@ -4,7 +4,6 @@ import arts from './meta.json'
 import styled from "styled-components";
 
 
-
 const Intro = styled.div`
 `
 
@@ -44,22 +43,18 @@ const OneSketch = styled.div`
   }
 `
 
-console.log(arts)
-console.log(import.meta.env)
-
-
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
-        <Intro>Hello Traveler</Intro>
+        <Intro>Hello Traveler, I am Julito</Intro>
         <Container>
             {
                 arts.map((art, idx)=>(
                     <OneSketch key={idx} onClick={()=>{
-                        window.location.href = import.meta.env.BASE_URL + "/" + art.created_at
+                        window.location.href = `${import.meta.env.BASE_URL}/sketch${art.source}/index.html`
                     }}>
-                        <img className={"img-container"} alt={art.name} src={import.meta.env.BASE_URL + art.snapshot}/>
+                        <img className={"img-container"} alt={art.name} src={`${import.meta.env.BASE_URL}/screenshots/${art.snapshot}`}/>
                         <div className={"name"}>{art.name}</div>
-                        <div className={"time"}>{art.created_at}</div>
+                        <div className={"time"}>{new Date(art.createdAt).toDateString()}</div>
                     </OneSketch>
                 ))
             }
