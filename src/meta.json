@@ -8,8 +8,20 @@
       "instanced"
     ],
     "description": "generate aoMap texture from geoJson. transformed polygon with wave animation. and also add a debug tool by using fbo",
-    "createdAt": 1710656978525,
-    "updatedAt": 1710640930000,
+    "createdAt": 1710724483482,
+    "updatedAt": 1710662281912,
+    "origin": ""
+  },
+  {
+    "name": "raw webgl boilerplate",
+    "source": "/0_webl_boilerplate",
+    "snapshot": "0_webl_boilerplate.png",
+    "tags": [
+      "boilerplate"
+    ],
+    "description": "a simple boilerplate for raw webgl sketch, using vite&gl-matrix",
+    "createdAt": 1710724482743,
+    "updatedAt": 1710724448116,
     "origin": ""
   },
   {

@@ -1,7 +1,7 @@
 import {button, useControls} from "leva";
 import React, {useEffect, useLayoutEffect, useMemo, useRef} from "react";
 import {
-    Billboard,
+    Billboard, Center,
     Circle,
     Instance,
     Instances,
@@ -100,7 +100,7 @@ export default function World() {
 
 
     const [scene, target] = useMemo(()=>{
-        const target = new THREE.WebGLRenderTarget(gl.domElement.width, gl.domElement.height)
+        const target = new THREE.WebGLRenderTarget(2048, 2048)
         const scene = new THREE.Scene()
         scene.background = new THREE.Color("#00efef")
         return [scene, target ]
@@ -111,6 +111,12 @@ export default function World() {
         state.gl.render(scene, cam.current)
         state.gl.setRenderTarget(null)
     })
+
+    useThree((state)=>{
+        state.camera.zoom= 12.5
+        state.camera.updateProjectionMatrix()
+    })
+
 
     const options2 = useControls("debug", {
         number: {
@@ -131,16 +137,15 @@ export default function World() {
 
 
     return <group>
-        <OrthographicCamera ref={cam} position={[0, 0,20]} zoom={200}/>
-        <instancedMesh ref={ref} args={[geometry,null , size*size]} instanceMatrix={positionAttr}>
+        <OrthographicCamera ref={cam} position={[0, 0, 100]} zoom={200}/>
+        <instancedMesh ref={ref} args={[geometry,null , size*size]} instanceMatrix={positionAttr} position={[0, -20 ,0]}>
             <WaveMaterial ref={matRef} speed={1} uFBO={cTexutre} number={ options2.number} progress={options2.progress}/>
         </instancedMesh>
-
         {createPortal(<SyncDebugger />, scene)}
 
-        <Billboard>
-        <mesh scale={[0.005, 0.005, 0.005]} position={[0, 30, 0]}>
-            <planeGeometry args={[gl.domElement.width,gl.domElement.height]}/>
+        <Billboard lockX={true} lockY={true}>
+        <mesh  position={[0, 30, 0]}>
+            <planeGeometry args={[gl.domElement.width / gl.domElement.height * 16, 16]}/>
             <meshBasicMaterial map={target.texture} side={THREE.DoubleSide}/>
         </mesh></Billboard>
 
