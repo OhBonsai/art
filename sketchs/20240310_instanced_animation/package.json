@@ -10,5 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@turf/turf": "^6.5.0"
   }
 }

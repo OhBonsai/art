@@ -51,15 +51,24 @@ const buildSketches = () => {
     }).map(item=>{
         const itemPath = path.join(sketchBase, item)
         const meta =JSON.parse(fs.readFileSync( path.join(itemPath, "meta.json"), "utf8"))
-        const screenshotPath = path.join(itemPath, "screenshot.png")
-        fs.copyFileSync(screenshotPath, `docs/screenshots/${item}.png`)
+
+
+        const screenshotPath = path.join(itemPath, "screenshot.gif")
+        let fileName =  `${item}.gif`
+        if (fs.existsSync(screenshotPath)) {
+            fs.copyFileSync(screenshotPath, `docs/screenshots/${fileName}`)
+        } else {
+            fileName = `${item}.png`
+            fs.copyFileSync(path.join(itemPath, "screenshot.png"), `docs/screenshots/${fileName}`)
+        }
 
         return {
             name: meta.name ?? item,
             source: "/"+item,
-            snapshot:`${item}.png`,
-            createdAt: fs.statSync(itemPath).ctime.getTime(),
-            updatedAt: directoryUpdatedAt(itemPath).getTime(),
+            snapshot: fileName,
+            description: meta.description || "",
+            createdAt: meta.createdAt || fs.statSync(itemPath).ctime.getTime(),
+            updatedAt: meta.updatedAt || directoryUpdatedAt(itemPath).getTime(),
             origin: ""
         }
     })
