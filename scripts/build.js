@@ -66,6 +66,7 @@ const buildSketches = () => {
             name: meta.name ?? item,
             source: "/"+item,
             snapshot: fileName,
+            tags: meta.tags || [],
             description: meta.description || "",
             createdAt: meta.createdAt || fs.statSync(itemPath).ctime.getTime(),
             updatedAt: meta.updatedAt || directoryUpdatedAt(itemPath).getTime(),

@@ -3,8 +3,12 @@
     "name": "instanced animation",
     "source": "/20240310_instanced_animation",
     "snapshot": "20240310_instanced_animation.gif",
+    "tags": [
+      "animation",
+      "instanced"
+    ],
     "description": "generate aoMap texture from geoJson. transformed polygon with wave animation. and also add a debug tool by using fbo",
-    "createdAt": 1710646034166,
+    "createdAt": 1710656978525,
     "updatedAt": 1710640930000,
     "origin": ""
   },
@@ -12,6 +16,9 @@
     "name": "r3f sketch boilerplate",
     "source": "/0_r3f_boilerplate",
     "snapshot": "0_r3f_boilerplate.png",
+    "tags": [
+      "boilerplate"
+    ],
     "description": "a simple boilerplate for r3f sketch, using vite&r3f&jsx",
     "createdAt": 1710078880641,
     "updatedAt": 1710249333000,

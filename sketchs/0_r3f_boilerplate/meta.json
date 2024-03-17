@@ -2,5 +2,6 @@
   "name": "r3f sketch boilerplate",
   "description": "a simple boilerplate for r3f sketch, using vite&r3f&jsx",
   "origin": "",
-  "createdAt": 1710078880641
+  "createdAt": 1710078880641,
+  "tags": ["boilerplate"]
 }
