@@ -1,39 +1,45 @@
-(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const s of document.querySelectorAll('link[rel="modulepreload"]'))i(s);new MutationObserver(s=>{for(const l of s)if(l.type==="childList")for(const h of l.addedNodes)h.tagName==="LINK"&&h.rel==="modulepreload"&&i(h)}).observe(document,{childList:!0,subtree:!0});function e(s){const l={};return s.integrity&&(l.integrity=s.integrity),s.referrerPolicy&&(l.referrerPolicy=s.referrerPolicy),s.crossOrigin==="use-credentials"?l.credentials="include":s.crossOrigin==="anonymous"?l.credentials="omit":l.credentials="same-origin",l}function i(s){if(s.ep)return;s.ep=!0;const l=e(s);fetch(s.href,l)}})();var R=`precision mediump float;
+(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const s of document.querySelectorAll('link[rel="modulepreload"]'))i(s);new MutationObserver(s=>{for(const l of s)if(l.type==="childList")for(const h of l.addedNodes)h.tagName==="LINK"&&h.rel==="modulepreload"&&i(h)}).observe(document,{childList:!0,subtree:!0});function e(s){const l={};return s.integrity&&(l.integrity=s.integrity),s.referrerPolicy&&(l.referrerPolicy=s.referrerPolicy),s.crossOrigin==="use-credentials"?l.credentials="include":s.crossOrigin==="anonymous"?l.credentials="omit":l.credentials="same-origin",l}function i(s){if(s.ep)return;s.ep=!0;const l=e(s);fetch(s.href,l)}})();var R=`#version 300 es
 
-uniform float uTime;
-uniform vec2 uResolution;
+precision mediump float;
+
+uniform float uTime;\r
+uniform vec2 uResolution;\r
 uniform vec3 uColor;
 
-vec2 guv() {
+out vec4 fragColor;\r
+
+vec2 guv() {\r
     float aspectRatio = uResolution.x / uResolution.y;
 
-    vec2 uv = gl_FragCoord.xy / uResolution;
-    if (aspectRatio >= 1.0) {
-        uv.x = (gl_FragCoord.x - (uResolution.x - uResolution.y) / 2.0) / uResolution.y;
-    } else {
-        uv.y = (gl_FragCoord.y - (uResolution.y - uResolution.x) / 2.0) / uResolution.x;
-    }
-    uv = (uv - 0.5) * 2.0;
-    return uv;
-}
+    vec2 uv = gl_FragCoord.xy / uResolution;\r
+    if (aspectRatio >= 1.0) {\r
+        uv.x = (gl_FragCoord.x - (uResolution.x - uResolution.y) / 2.0) / uResolution.y;\r
+    } else {\r
+        uv.y = (gl_FragCoord.y - (uResolution.y - uResolution.x) / 2.0) / uResolution.x;\r
+    }\r
+    uv = (uv - 0.5) * 2.0;\r
+    return uv;\r
+}\r
 
-void main()
-{
+void main()\r
+{\r
     vec2 uv = guv();
 
-    float radius = 0.5;
-    float distance = length(uv);
+    float radius = 0.5;\r
+    float distance = length(uv);\r
     float alpha = smoothstep(radius - 0.01, radius + 0.01, distance);
 
     vec3 finalColor = uColor * (alpha > 0. ? 0.0 : 1.0);
 
-    gl_FragColor = vec4(finalColor, 1.0);
-}`,I=`attribute vec3 position;
+    fragColor = vec4(finalColor, 1.0);\r
+}`,I=`#version 300 es
 
-void main()
-{
-    gl_Position = vec4(position, 1.0);
-}`;const H=(n,t)=>{let e=n.createBuffer(),i=t instanceof Uint16Array||t instanceof Uint32Array?n.ELEMENT_ARRAY_BUFFER:n.ARRAY_BUFFER;return n.bindBuffer(i,e),n.bufferData(i,t,n.STATIC_DRAW),e},M=(n,t,e)=>{let i=n.createShader(e);return n.shaderSource(i,t),n.compileShader(i),n.getShaderParameter(i,n.COMPILE_STATUS)||console.error("An error occurred compiling the shader: "+n.getShaderInfoLog(i)),i},T=(n,t)=>{let e=n.createProgram();for(let i of t)n.attachShader(e,i);return n.linkProgram(e),e},z=()=>{let n=document.getElementById("webgl");return n.width=window.innerWidth,n.height=window.innerHeight,n},P=n=>{let t=window.devicePixelRatio,e=n.getContext("webgl");return e||window.alert("WebGL not supported"),window.addEventListener("resize",()=>{n.width=Math.floor(window.innerWidth*t),n.height=Math.floor(window.innerHeight*t),e.viewport(0,0,n.width,n.height)}),e.clearColor(0,0,0,0),e.colorMask(!0,!0,!0,!0),e.enable(e.DEPTH_TEST),e.depthFunc(e.LEQUAL),e.cullFace(e.BACK),e.blendFunc(e.SRC_ALPHA,e.ONE_MINUS_SRC_ALPHA),e};/**
+in vec3 position;\r
+
+void main()\r
+{\r
+    gl_Position = vec4(position, 1.0);\r
+}`;const H=(n,t)=>{let e=n.createBuffer(),i=t instanceof Uint16Array||t instanceof Uint32Array?n.ELEMENT_ARRAY_BUFFER:n.ARRAY_BUFFER;return n.bindBuffer(i,e),n.bufferData(i,t,n.STATIC_DRAW),e},M=(n,t,e)=>{let i=n.createShader(e);return n.shaderSource(i,t),n.compileShader(i),n.getShaderParameter(i,n.COMPILE_STATUS)||console.error("An error occurred compiling the shader: "+n.getShaderInfoLog(i)),i},T=(n,t)=>{let e=n.createProgram();for(let i of t)n.attachShader(e,i);return n.linkProgram(e),e},z=()=>{let n=document.getElementById("webgl");return n.width=window.innerWidth,n.height=window.innerHeight,n},P=n=>{let t=window.devicePixelRatio,e=n.getContext("webgl2");return e||window.alert("WebGL2 not supported"),window.addEventListener("resize",()=>{n.width=Math.floor(window.innerWidth*t),n.height=Math.floor(window.innerHeight*t),e.viewport(0,0,n.width,n.height)}),e.clearColor(0,0,0,0),e.colorMask(!0,!0,!0,!0),e.enable(e.DEPTH_TEST),e.depthFunc(e.LEQUAL),e.cullFace(e.BACK),e.blendFunc(e.SRC_ALPHA,e.ONE_MINUS_SRC_ALPHA),e};/**
  * lil-gui
  * https://lil-gui.georgealways.com
  * @version 0.19.2
