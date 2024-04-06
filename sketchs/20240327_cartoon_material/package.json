@@ -1,0 +1,15 @@
+{
+  "name": "cartoon_material",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "scripts": {
+    "dev": "vite"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "hash-sum": "^2.0.0"
+  }
+}
